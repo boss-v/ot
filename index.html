@@ -267,17 +267,9 @@ nav{position:sticky;top:0;z-index:200;height:58px;display:flex;align-items:cente
   </div>
   <div class="nav-r">
     <!-- 방문자 통계 -->
-    <div class="visitor-stats">
-      <div class="stat-item">
-        <div class="stat-label">Today</div>
-        <div class="stat-value" id="todayCount">-</div>
-      </div>
-      <div class="stat-sep"></div>
-      <div class="stat-item">
-        <div class="stat-label">Total</div>
-        <div class="stat-value" id="totalCount">-</div>
-      </div>
-    </div>
+<div class="visitor-stats" style="display: flex; gap: 10px; align-items: center;">
+  <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fboss-v.github.io%2Fot&count_bg=%23333333&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=VISITS&edge_flat=false" alt="Hits">
+</div>
     <div class="ai-pill"><div class="ai-dot"></div>AI 큐레이션</div>
     <button class="btn-update" id="aibtn" onclick="runAI()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0118.8-4.3M22 12.5a10 10 0 01-18.8 4.2"/></svg>
