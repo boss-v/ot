@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<!-- SEO 핵심 태그 -->
+<title>OT 오티 — OTT 신작 캘린더 | 넷플릭스·디즈니+·티빙·왓챠</title>
+<meta name="description" content="OT 오티 — 이번 달 OTT 신작을 한눈에. 넷플릭스, 디즈니플러스, 티빙, 왓챠 신작을 캘린더로 확인하세요.">
+<meta name="keywords" content="OTT 신작, OTT 캘린더, 넷플릭스 신작, 디즈니플러스 신작, 티빙 신작, 왓챠 신작, 오티, ottfamily, OT">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://[깃허브사용자명].github.io/ot/">
+
+<!-- Open Graph (카카오·슬랙 등 공유 미리보기) -->
+<meta property="og:title" content="OT 오티 — OTT 신작 캘린더">
+<meta property="og:description" content="넷플릭스·디즈니+·티빙·왓챠 신작을 캘린더로 한눈에. 매달 AI가 자동 업데이트.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://[깃허브사용자명].github.io/ot/">
+<meta property="og:locale" content="ko_KR">
+
+<!-- 구조화 데이터 (구글 리치 결과용) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "OT 오티",
+  "alternateName": "ottfamily",
+  "url": "https://[깃허브사용자명].github.io/ot/",
+  "description": "OTT 신작 캘린더 서비스",
+  "inLanguage": "ko"
+}
+</script>
+
+<meta name="theme-color" content="#0E0E1A">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0B0B16;--s1:#11111F;--s2:#17172A;--s3:#1E1E33;--s4:#252540;
+  --b1:rgba(236,234,230,0.07);--b2:rgba(236,234,230,0.13);--b3:rgba(236,234,230,0.22);
+  --cream:#ECEAE4;--cream2:#D8D5CC;--cream3:rgba(236,234,228,0.45);--cream4:rgba(236,234,228,0.14);
+  --t1:#ECEAE4;--t2:#7A7A9A;--t3:#3E3E5A;
+  --nf:#E5182A;--di:#1A8FDE;--tv:#FF2550;--wc:#FF5F8A;
+}
+html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
+body{font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--t1);min-height:100vh;line-height:1.55;overflow-x:hidden}
+button,input{font-family:inherit}
+a{color:inherit;text-decoration:none}
+
+nav{position:sticky;top:0;z-index:200;height:58px;display:flex;align-items:center;gap:16px;padding:0 32px;background:rgba(11,11,22,0.78);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-bottom:1px solid var(--b1)}
+
+.logo{display:flex;align-items:baseline;gap:7px;flex-shrink:0;cursor:default;user-select:none}
+.logo-ot{font-size:22px;font-weight:900;letter-spacing:-1.2px;color:var(--cream);line-height:1}
+.logo-name{font-size:11px;font-weight:600;letter-spacing:0.04em;color:var(--cream2);line-height:1;padding-bottom:1px}
+
+.nav-search{position:relative;flex:1;max-width:290px}
+.nav-search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:14px;height:14px;stroke:var(--t3);pointer-events:none}
+.nav-search input{width:100%;background:var(--s2);border:1px solid var(--b1);border-radius:10px;padding:7px 12px 7px 33px;color:var(--t1);font-size:13px;outline:none;transition:border-color 0.2s,background 0.2s}
+.nav-search input::placeholder{color:var(--t3)}
+.nav-search input:focus{border-color:var(--b3);background:var(--s3)}
+
+.nav-r{margin-left:auto;display:flex;align-items:center;gap:10px}
+.ai-pill{display:flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;letter-spacing:0.07em;padding:4px 11px;border-radius:20px;background:var(--cream4);color:var(--cream2);border:1px solid var(--b2)}
+.ai-dot{width:5px;height:5px;border-radius:50%;background:var(--cream);animation:gdot 2s ease-in-out infinite}
+@keyframes gdot{0%,100%{opacity:1}50%{opacity:0.25}}
+.btn-update{display:flex;align-items:center;gap:7px;background:var(--cream);border:none;border-radius:10px;padding:8px 18px;color:#0B0B16;font-size:12.5px;font-weight:800;letter-spacing:0.01em;cursor:pointer;transition:background 0.15s,transform 0.1s;white-space:nowrap}
+.btn-update:hover{background:var(--cream2)}
+.btn-update:active{transform:scale(0.97)}
+.btn-update:disabled{opacity:0.38;cursor:not-allowed;transform:none}
+.btn-update svg{width:13px;height:13px;flex-shrink:0}
+
+.hero{position:relative;height:490px;overflow:hidden;cursor:pointer}
+.hero::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(to right,rgba(11,11,22,0.96) 28%,rgba(11,11,22,0.55) 62%,transparent 100%)}
+.hero::before{content:'';position:absolute;bottom:0;left:0;right:0;height:48%;z-index:1;pointer-events:none;background:linear-gradient(to bottom,transparent,var(--bg))}
+.hero-bg{position:absolute;inset:0;transition:background 0.6s}
+.hero-visual{position:absolute;top:0;right:0;width:58%;height:100%;overflow:hidden}
+.hero-visual img{width:100%;height:100%;object-fit:cover;filter:brightness(0.48) saturate(0.8)}
+.hero-art{position:absolute;inset:0}
+.hero-content{position:absolute;top:0;left:0;bottom:0;display:flex;flex-direction:column;justify-content:flex-end;padding:0 52px 58px;width:58%;max-width:700px;z-index:2}
+.hero-eyebrow{display:flex;align-items:center;gap:9px;margin-bottom:11px}
+.live-badge{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--cream3)}
+.live-dot{width:5px;height:5px;border-radius:50%;background:var(--cream);animation:ldot 1.9s ease-in-out infinite}
+@keyframes ldot{0%,100%{opacity:0.9}50%{opacity:0.25}}
+.hero-pill{font-size:10px;font-weight:800;letter-spacing:0.06em;padding:3px 10px;border-radius:5px;color:#fff;text-transform:uppercase}
+.hero-title{font-size:46px;font-weight:900;letter-spacing:-1.6px;line-height:1.08;margin-bottom:13px;color:var(--cream)}
+.hero-meta{display:flex;align-items:center;gap:9px;font-size:13px;color:rgba(236,234,228,0.45);margin-bottom:11px}
+.hero-sep{opacity:0.3}
+.hero-desc{font-size:14px;color:rgba(236,234,228,0.5);line-height:1.75;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+.wrap{max-width:1340px;margin:0 auto;padding:0 32px}
+
+.tabs-row{display:flex;align-items:center;gap:6px;padding:26px 0 0;flex-wrap:wrap}
+.tab{font-size:13px;font-weight:500;padding:6px 16px;border-radius:30px;border:1px solid var(--b2);background:transparent;color:var(--t2);cursor:pointer;transition:all 0.15s}
+.tab:hover{color:var(--t1);border-color:var(--b3)}
+.tab.active{background:var(--cream);color:var(--bg);border-color:var(--cream);font-weight:700}
+.tab.act-nf.active{background:var(--nf);border-color:var(--nf);color:#fff}
+.tab.act-di.active{background:var(--di);border-color:var(--di);color:#fff}
+.tab.act-tv.active{background:var(--tv);border-color:var(--tv);color:#fff}
+.tab.act-wc.active{background:var(--wc);border-color:var(--wc);color:#fff}
+.tabs-sep{width:1px;height:18px;background:var(--b2);flex-shrink:0;margin:0 3px}
+
+.sec-hd{display:flex;align-items:baseline;justify-content:space-between;padding:22px 0 16px}
+.sec-title{font-size:16px;font-weight:800;color:var(--t1);letter-spacing:-0.2px}
+.sec-cnt{font-size:13px;color:var(--t3);font-weight:400;margin-left:5px}
+.sec-ts{font-size:12px;color:var(--t3)}
+
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(166px,1fr));gap:15px;padding-bottom:52px}
+
+.card{border-radius:12px;overflow:hidden;background:var(--s1);border:1px solid var(--b1);cursor:pointer;position:relative;transition:transform 0.22s cubic-bezier(.22,1,.36,1),box-shadow 0.22s,border-color 0.2s}
+.card:hover{transform:translateY(-6px) scale(1.012);box-shadow:0 28px 55px rgba(0,0,0,0.65),0 0 0 1px var(--b2);border-color:rgba(236,234,228,0.16)}
+.card-poster{aspect-ratio:2/3;position:relative;overflow:hidden;background:var(--s2)}
+.card-art{position:absolute;inset:0;overflow:hidden}
+.card-art img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s}
+.card:hover .card-art img{transform:scale(1.04)}
+.poster-letter{position:absolute;font-size:78px;font-weight:900;color:rgba(236,234,228,0.06);letter-spacing:-4px;top:50%;left:50%;transform:translate(-50%,-50%);user-select:none;pointer-events:none}
+.card-pb{position:absolute;top:8px;left:8px;font-size:9px;font-weight:800;letter-spacing:0.07em;padding:2px 7px;border-radius:4px;color:#fff;text-transform:uppercase;backdrop-filter:blur(6px)}
+.pb-nf{background:rgba(229,24,42,0.88)}
+.pb-di{background:rgba(26,143,222,0.88)}
+.pb-tv{background:rgba(255,37,80,0.88)}
+.pb-wc{background:rgba(255,95,138,0.88)}
+.card-date{position:absolute;bottom:8px;right:8px;font-size:9.5px;font-weight:600;padding:2px 7px;border-radius:4px;background:rgba(0,0,0,0.62);color:rgba(236,234,228,0.8);backdrop-filter:blur(4px)}
+.card-ov{position:absolute;inset:0;background:rgba(11,11,22,0.82);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s}
+.card:hover .card-ov{opacity:1}
+.card-play{width:54px;height:54px;border-radius:50%;background:rgba(236,234,228,0.92);display:flex;align-items:center;justify-content:center;transform:scale(0.88);transition:transform 0.18s}
+.card:hover .card-play{transform:scale(1)}
+.card-play svg{width:20px;height:20px;margin-left:2px}
+.card-info{padding:11px 10px 12px}
+.card-title{font-size:13px;font-weight:700;line-height:1.3;margin-bottom:5px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.card-meta{font-size:11px;color:var(--t3);display:flex;align-items:center;gap:6px}
+.card-tag{color:var(--cream2);font-weight:600}
+
+.skel{border-radius:12px;overflow:hidden;background:var(--s1);border:1px solid var(--b1)}
+.skel-p{aspect-ratio:2/3;background:linear-gradient(90deg,var(--s2) 25%,var(--s3) 50%,var(--s2) 75%);background-size:200% 100%;animation:skl 1.8s infinite}
+@keyframes skl{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.skel-i{padding:11px 10px 12px}
+.skel-l{height:11px;background:var(--s2);border-radius:4px;margin-bottom:7px}
+.skel-l.s{width:65%;height:9px}
+
+.empty-st{grid-column:1/-1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:68px 20px;color:var(--t3)}
+.empty-st svg{width:46px;height:46px;opacity:0.3}
+.empty-st p{font-size:14px;font-weight:500}
+
+.cal{padding:32px 0 52px}
+.cal-hd{display:flex;align-items:center;justify-content:space-between;padding:0 0 18px}
+.view-tabs{display:flex;gap:6px}
+.view-tab{font-size:12px;font-weight:600;padding:5px 14px;border-radius:7px;border:1px solid var(--b2);background:transparent;color:var(--t2);cursor:pointer;transition:all 0.15s}
+.view-tab:hover{color:var(--t1);border-color:var(--b3)}
+.view-tab.active{background:var(--cream);color:var(--bg);border-color:var(--cream)}
+.cal-nav{display:flex;align-items:center;gap:16px}
+.cal-period{font-size:15px;font-weight:700;color:var(--t1);min-width:140px;text-align:center}
+.cal-arr{width:32px;height:32px;border-radius:8px;border:1px solid var(--b2);background:var(--s1);color:var(--t2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.15s}
+.cal-arr:hover{background:var(--s2);color:var(--t1);border-color:var(--b3)}
+.cal-arr svg{width:16px;height:16px}
+
+.cal-cont{display:none}
+.cal-cont.show{display:block}
+
+.mgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;padding:16px;background:var(--s1);border-radius:12px;border:1px solid var(--b1)}
+.mcell{min-height:88px;padding:7px;border-radius:6px;background:var(--s2);border:1px solid rgba(236,234,228,0.04);position:relative}
+.mcell.out{background:transparent;border:1px solid transparent}
+.mcell.tc{background:var(--s3);border-color:var(--b2)}
+.dn{font-size:13px;font-weight:600;color:var(--t2);margin-bottom:6px;line-height:1}
+.dn.sun{color:#FF7676}
+.dn.sat{color:#6FA8DC}
+.dn.tnow{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--cream);color:var(--bg);font-weight:800;margin-bottom:4px}
+.mev{display:block;width:100%;text-align:left;font-size:10px;font-weight:600;padding:4px 6px;margin-bottom:3px;border-radius:4px;border:none;cursor:pointer;transition:transform 0.1s;line-height:1.3;color:#fff}
+.mev:last-child{margin-bottom:0}
+.mev:hover{transform:translateX(2px)}
+.mev.mc-nf{background:var(--nf)}
+.mev.mc-di{background:var(--di)}
+.mev.mc-tv{background:var(--tv)}
+.mev.mc-wc{background:var(--wc)}
+
+.wgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+.wcol{background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:12px 10px;min-height:220px}
+.wcol.twc{background:var(--s3);border-color:var(--b2)}
+.wcol-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--b1)}
+.wcol-dow{font-size:11px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:0.03em}
+.wcol-d{font-size:17px;font-weight:800;color:var(--t2)}
+.wcol-d.td{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--cream);color:var(--bg)}
+.wcol-body{display:flex;flex-direction:column;gap:7px}
+.wev{display:block;width:100%;text-align:left;font-size:10px;line-height:1.4;font-weight:600;padding:7px 8px;border-radius:6px;border:none;cursor:pointer;transition:transform 0.1s;color:#fff}
+.wev:hover{transform:translateY(-1px)}
+.wev.wc-nf{background:var(--nf)}
+.wev.wc-di{background:var(--di)}
+.wev.wc-tv{background:var(--tv)}
+.wev.wc-wc{background:var(--wc)}
+
+.modal-ov{position:fixed;inset:0;z-index:500;background:rgba(11,11,22,0.93);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.modal-ov.open{opacity:1;pointer-events:auto}
+.modal{position:relative;width:100%;max-width:740px;max-height:90vh;overflow-y:auto;background:var(--s1);border-radius:16px;border:1px solid var(--b2);box-shadow:0 40px 90px rgba(0,0,0,0.7)}
+.modal-bg{position:absolute;top:0;left:0;right:0;height:240px;background-size:cover;background-position:center;filter:blur(8px) brightness(0.5);opacity:0.4}
+.modal-art{position:absolute;top:0;left:0;right:0;height:240px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.modal-close{position:absolute;top:18px;right:18px;z-index:10;width:36px;height:36px;border-radius:50%;background:rgba(11,11,22,0.75);backdrop-filter:blur(8px);border:1px solid var(--b2);color:var(--t1);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.2s}
+.modal-close:hover{background:rgba(11,11,22,0.92)}
+.modal-close svg{width:18px;height:18px}
+.modal-cont{position:relative;padding:190px 36px 36px}
+.modal-title{font-size:32px;font-weight:900;letter-spacing:-1px;line-height:1.15;margin-bottom:14px;color:var(--cream)}
+.modal-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
+.mchip{font-size:11px;font-weight:700;letter-spacing:0.03em;padding:4px 10px;border-radius:5px;background:var(--s3);color:var(--t2);border:1px solid var(--b2)}
+.mchip.pl{color:#fff;border:none}
+.modal-meta{display:grid;gap:16px;margin-bottom:24px}
+.mmeta-row{display:flex;gap:12px;font-size:13px}
+.mmeta-label{color:var(--t3);font-weight:600;min-width:70px;flex-shrink:0}
+.mmeta-val{color:var(--t1);line-height:1.6}
+.modal-syn{font-size:14px;line-height:1.75;color:rgba(236,234,228,0.7)}
+
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(120%);z-index:600;background:var(--s1);border:1px solid var(--b2);border-radius:12px;padding:14px 20px;display:flex;align-items:center;gap:12px;box-shadow:0 18px 40px rgba(0,0,0,0.5);opacity:0;transition:transform 0.3s cubic-bezier(.22,1,.36,1),opacity 0.3s}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.toast-spin{width:16px;height:16px;border:2px solid var(--b3);border-top-color:var(--cream);border-radius:50%;animation:tspin 0.7s linear infinite}
+@keyframes tspin{to{transform:rotate(360deg)}}
+.toast-ico{font-size:16px;line-height:1}
+.toast-msg{font-size:13px;font-weight:600;color:var(--t1);white-space:nowrap}
+
+@media(max-width:900px){
+  nav{padding:0 20px;height:54px}
+  .logo-ot{font-size:20px}
+  .logo-name{font-size:10px}
+  .nav-search{max-width:180px}
+  .ai-pill{font-size:9.5px;padding:3px 9px}
+  .btn-update{padding:7px 14px;font-size:11.5px}
+  .btn-update svg{width:12px;height:12px}
+  .hero{height:380px}
+  .hero-content{padding:0 28px 42px;width:100%;max-width:none}
+  .hero-title{font-size:32px;letter-spacing:-1.2px}
+  .hero-meta{font-size:12px}
+  .hero-desc{font-size:13px}
+  .wrap{padding:0 20px}
+  .tabs-row{padding:20px 0 0}
+  .tab{font-size:12px;padding:5px 13px}
+  .sec-hd{padding:18px 0 14px}
+  .sec-title{font-size:15px}
+  .card-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+  .card-title{font-size:12px}
+  .card-meta{font-size:10px}
+  .mgrid,.wgrid{gap:6px;padding:12px}
+  .mcell{min-height:72px;padding:5px}
+  .dn{font-size:12px}
+  .mev,.wev{font-size:9px;padding:3px 5px}
+  .wcol{padding:10px 8px}
+  .modal-cont{padding:180px 24px 24px}
+  .modal-title{font-size:26px}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">
+    <div class="logo-ot">OT</div>
+    <div class="logo-name">ottfamily</div>
+  </div>
+  <div class="nav-search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" placeholder="작품·배우·장르 검색" oninput="onSrch(this.value)">
+  </div>
+  <div class="nav-r">
+    <div class="ai-pill"><div class="ai-dot"></div>AI 큐레이션</div>
+    <button class="btn-update" id="aibtn" onclick="runAI()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0118.8-4.3M22 12.5a10 10 0 01-18.8 4.2"/></svg>
+      AI 신작 업데이트
+    </button>
+  </div>
+</nav>
+
+<div class="hero" onclick="heroClick()">
+  <div class="hero-bg" id="hbg"></div>
+  <div class="hero-visual"><div id="hvis"></div></div>
+  <div class="hero-art" id="hart"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="live-badge"><div class="live-dot"></div>지금 스트리밍</div>
+      <div class="hero-pill" id="hpill"></div>
+    </div>
+    <div class="hero-title" id="htitle"></div>
+    <div class="hero-meta">
+      <span id="htype"></span>
+      <span class="hero-sep">·</span>
+      <span id="hgenre"></span>
+      <span class="hero-sep">·</span>
+      <span id="hdate"></span>
+    </div>
+    <div class="hero-desc" id="hdesc"></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="tabs-row">
+    <button class="tab active" onclick="setF('all',this)">전체</button>
+    <button class="tab act-nf" onclick="setF('nf',this)">넷플릭스</button>
+    <button class="tab act-di" onclick="setF('di',this)">디즈니+</button>
+    <button class="tab act-tv" onclick="setF('tv',this)">티빙</button>
+    <button class="tab act-wc" onclick="setF('wc',this)">왓챠</button>
+    <div class="tabs-sep"></div>
+    <div class="sec-ts" id="ts">AI 업데이트 —:—</div>
+  </div>
+
+  <div class="sec-hd">
+    <div><span class="sec-title">신작 라인업</span><span class="sec-cnt" id="cnt"></span></div>
+  </div>
+  <div class="card-grid" id="grid"></div>
+
+  <div class="cal">
+    <div class="cal-hd">
+      <div class="view-tabs">
+        <button class="view-tab" id="vm" onclick="setV('month')">월 캘린더</button>
+        <button class="view-tab active" id="vw" onclick="setV('week')">주 캘린더</button>
+      </div>
+      <div class="cal-nav">
+        <button class="cal-arr" onclick="prevP()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="cal-period" id="period"></div>
+        <button class="cal-arr" onclick="nextP()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="cal-cont" id="calM"><div class="mgrid" id="mgrid"></div></div>
+    <div class="cal-cont show" id="calW"><div class="wgrid" id="wgrid"></div></div>
+  </div>
+</div>
+
+<div class="modal-ov" id="ov" onclick="ovc(event)">
+  <div class="modal">
+    <div class="modal-bg" id="mbg"></div>
+    <div class="modal-art" id="mart"></div>
+    <button class="modal-close" onclick="closeM()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-cont">
+      <div class="modal-title" id="mt"></div>
+      <div class="modal-chips" id="mc"></div>
+      <div class="modal-meta">
+        <div class="mmeta-row"><div class="mmeta-label">공개일</div><div class="mmeta-val" id="md"></div></div>
+        <div class="mmeta-row"><div class="mmeta-label">출연</div><div class="mmeta-val" id="mca"></div></div>
+      </div>
+      <div class="modal-syn" id="msy"></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">
+  <div class="toast-spin" id="tspin"></div>
+  <div class="toast-ico" id="tico"></div>
+  <div class="toast-msg" id="tmsg"></div>
+</div>
+
+<script>
+const PM={nf:{n:'넷플릭스',c:'#E5182A',pb:'pb-nf',mc:'mc-nf',wc:'wc-nf'},di:{n:'디즈니+',c:'#1A8FDE',pb:'pb-di',mc:'mc-di',wc:'wc-di'},tv:{n:'티빙',c:'#FF2550',pb:'pb-tv',mc:'mc-tv',wc:'wc-tv'},wc:{n:'왓챠',c:'#FF5F8A',pb:'pb-wc',mc:'mc-wc',wc:'wc-wc'}};
+
+let DB=[
+  {id:1,title:'사일로 시즌2',plat:'di',type:'시리즈',genre:['SF','스릴러'],date:'2026-04-01',cast:'레베카 퍼거슨, 팀 로빈스',synopsis:'인류의 마지막 피난처, 지하 144층 사일로. 외부세계의 진실을 알게 된 줄리엣은 또 다른 사일로를 발견하고 충격적인 비밀과 마주한다.',tmq:'Silo Season 2',featured:true},
+  {id:2,title:'나쁜 기억 지우개',plat:'nf',type:'드라마',genre:['로맨스','멜로'],date:'2026-04-03',cast:'김재영, 진기주',synopsis:'기억을 잃어가는 한 남자와 그를 지키려는 여자의 애틋한 사랑 이야기. 시간이 흐를수록 더욱 간절해지는 감정이 가슴을 울린다.',tmq:'Bad Memory Eraser',featured:false},
+  {id:3,title:'블랙아웃',plat:'tv',type:'드라마',genre:['범죄','스릴러'],date:'2026-04-05',cast:'변요한, 김보라',synopsis:'정전이 일어난 도시에서 벌어진 연쇄살인사건. 기억을 잃은 남자가 자신이 범인일지도 모른다는 공포 속에서 진실을 추적한다.',tmq:'Blackout Korea',featured:false},
+  {id:4,title:'더 라스트 오브 어스 시즌2',plat:'wc',type:'시리즈',genre:['드라마','SF'],date:'2026-04-08',cast:'페드로 파스칼, 벨라 램지',synopsis:'엘리와 조엘의 여정이 계속된다. 복수와 용서, 그리고 살아남기 위한 선택 앞에서 두 사람은 또 다른 시련을 마주한다.',tmq:'The Last of Us Season 2',featured:false},
+  {id:5,title:'킹덤: 아신전 2',plat:'nf',type:'영화',genre:['시대극','좀비'],date:'2026-04-12',cast:'전지현, 박병은',synopsis:'생사초의 비밀을 알게 된 아신. 조선을 뒤흔들 거대한 복수극이 시작되고, 그녀의 손에 왕국의 운명이 달려있다.',tmq:'Kingdom Ashin of the North 2',featured:false},
+  {id:6,title:'위쳐 시즌4',plat:'di',type:'시리즈',genre:['판타지','액션'],date:'2026-04-15',cast:'헨리 카빌, 안야 샬로트라',synopsis:'괴물 사냥꾼 게롤트의 새로운 모험. 운명의 아이 시리를 지키기 위해 그는 더욱 강력한 적들과 맞서야 한다.',tmq:'The Witcher Season 4',featured:false},
+  {id:7,title:'무빙 시즌2',plat:'tv',type:'시리즈',genre:['액션','SF'],date:'2026-04-18',cast:'조인성, 한효주, 류승룡',synopsis:'초능력을 가진 이들의 2세대 이야기가 펼쳐진다. 더욱 강력해진 적들 앞에서 새로운 영웅들이 등장한다.',tmq:'Moving Season 2',featured:false},
+  {id:8,title:'페이퍼 하우스: 코리아 시즌2',plat:'nf',type:'시리즈',genre:['범죄','액션'],date:'2026-04-22',cast:'유지태, 박해수, 전종서',synopsis:'통일 대박 작전의 두 번째 막이 오른다. 인질과 범인, 경찰이 얽힌 팽팽한 심리전이 한반도를 뒤흔든다.',tmq:'Money Heist Korea Season 2',featured:false}
+];
+
+let flt='all',srch='',calV='week',calO=0,hid=1;
+const TM_KEY='a7f73e8241da9b3f2ec6bb41c0482547';
+
+function gc(it){const h=(it.title||'').split('').reduce((a,c)=>a+c.charCodeAt(0),0);const c1=['#E52B50','#4A90E2','#9B59B6','#E67E22','#1ABC9C'][h%5];const c2=['#8E44AD','#2C3E50','#D35400','#27AE60','#2980B9'][h%5];return{c1,c2};}
+
+function svg(it,w,h){const{c1,c2}=gc(it);return`<svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g${it.id}" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:${c1}"/><stop offset="100%" style="stop-color:${c2}"/></linearGradient></defs><rect width="${w}" height="${h}" fill="url(#g${it.id})"/></svg>`;}
+
+function fs(d){const[y,m,dt]=d.split('-');return`${m}/${dt}`;}
+function fd(d){const[y,m,dt]=d.split('-');return`${y}년 ${parseInt(m)}월 ${parseInt(dt)}일`;}
+
+async function fetchP(it){
+  if(it.poster)return;
+  try{
+    const r=await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${TM_KEY}&query=${encodeURIComponent(it.tmq||it.title)}&language=ko`);
+    const d=await r.json();if(!d.results||!d.results[0])return;
+    const img=d.results[0].poster_path;if(!img)return;
+    it.poster=`https://image.tmdb.org/t/p/w500${img}`;
+    const e=document.getElementById(`ca-${it.id}`);
+    if(e)e.innerHTML=`<img src="${it.poster}" alt="${it.title}" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none'">`;
+    if(it.id===hid){
+      const hv=document.getElementById('hvis');if(hv)hv.innerHTML=`<img src="${it.poster}" alt="${it.title}">`;
+    }
+  }catch(e){console.error(e);}
+}
+
+function loadP(){DB.forEach(it=>fetchP(it));}
+
+function rHero(it){
+  if(!it){document.querySelector('.hero').style.display='none';return;}
+  document.querySelector('.hero').style.display='block';hid=it.id;const pm=PM[it.plat]||{};const{c1,c2}=gc(it);
+  document.getElementById('hbg').style.background=`linear-gradient(145deg,${c1},${c2})`;
+  const hv=document.getElementById('hvis');
+  hv.innerHTML=it.poster?`<img src="${it.poster}" alt="${it.title}">`:svg(it,900,490);
+  document.getElementById('hart').innerHTML=it.poster?'':svg(it,1400,490);
+  const hp=document.getElementById('hpill');hp.textContent=pm.n||it.plat;hp.style.background=pm.c||'#444';
+  document.getElementById('htitle').textContent=it.title;
+  document.getElementById('htype').textContent=it.type||'드라마';
+  document.getElementById('hgenre').textContent=(it.genre||[]).join(' · ');
+  document.getElementById('hdate').textContent=fd(it.date);
+  document.getElementById('hdesc').textContent=it.synopsis||'';
+}
+
+function heroClick(){const it=DB.find(r=>r.id===hid);if(it)openM(it.id);}
+
+function cardH(it){const pm=PM[it.plat]||{};const art=it.poster?`<img src="${it.poster}" alt="${it.title}" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none'">`:(svg(it,200,300)+`<div class="poster-letter">${it.title.charAt(0)}</div>`);
+  return`<div class="card" onclick="openM(${it.id})"><div class="card-poster"><div class="card-art" id="ca-${it.id}">${art}</div><div class="card-pb ${pm.pb||''}">${pm.n||it.plat}</div><div class="card-date">${fs(it.date)}</div><div class="card-ov"><div class="card-play"><svg viewBox="0 0 24 24" fill="#0B0B16"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-info"><div class="card-title">${it.title}</div><div class="card-meta"><span class="card-tag">${it.type||'드라마'}</span><span>${(it.genre||[]).join(' · ')}</span></div></div></div>`;}
+function skelH(){return`<div class="skel"><div class="skel-p"></div><div class="skel-i"><div class="skel-l"></div><div class="skel-l s"></div></div></div>`;}
+
+function rCards(){
+  let items=DB;
+  if(flt!=='all')items=items.filter(i=>i.plat===flt);
+  if(srch.trim()){const sq=srch.toLowerCase();items=items.filter(i=>i.title?.toLowerCase().includes(sq)||i.cast?.toLowerCase().includes(sq)||(i.genre||[]).some(g=>g.toLowerCase().includes(sq))||i.synopsis?.toLowerCase().includes(sq));}
+  const g=document.getElementById('grid');
+  if(!items.length){g.innerHTML=`<div class="empty-st"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 15s1.5-2 4-2 4 2 4 2" stroke-linecap="round"/><line x1="9" y1="9.5" x2="9" y2="9.5" stroke-width="2.5" stroke-linecap="round"/><line x1="15" y1="9.5" x2="15" y2="9.5" stroke-width="2.5" stroke-linecap="round"/></svg><p>결과가 없어요</p></div>`;document.getElementById('cnt').textContent='';}
+  else{g.innerHTML=items.map(cardH).join('');document.getElementById('cnt').textContent=`(${items.length}편)`;rHero(items.find(i=>i.featured)||items[0]);}
+}
+function setF(f,btn){flt=f;document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');rCards();rCal();}
+function onSrch(v){srch=v;rCards();}
+
+function calItems(){return flt==='all'?DB:DB.filter(i=>i.plat===flt);}
+function setV(v){calV=v;calO=0;document.getElementById('vm').classList.toggle('active',v==='month');document.getElementById('vw').classList.toggle('active',v==='week');document.getElementById('calM').classList.toggle('show',v==='month');document.getElementById('calW').classList.toggle('show',v==='week');rCal();}
+function prevP(){calO--;rCal();}
+function nextP(){calO++;rCal();}
+function rCal(){calV==='month'?rMonth():rWeek();}
+
+function rMonth(){
+  const base=new Date(2026,3+calO,1);const yr=base.getFullYear(),mo=base.getMonth();
+  document.getElementById('period').textContent=`${yr}년 ${mo+1}월`;
+  const fd2=new Date(yr,mo,1).getDay(),last=new Date(yr,mo+1,0).getDate(),today=new Date();
+  const evs=calItems();let html='',cnt=1;const total=Math.ceil((fd2+last)/7)*7;
+  for(let i=0;i<total;i++){
+    if(i<fd2||cnt>last){html+=`<div class="mcell out"></div>`;if(i>=fd2)cnt++;continue;}
+    const d=cnt;const ds=`${yr}-${String(mo+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const isT=today.getFullYear()===yr&&today.getMonth()===mo&&today.getDate()===d;const col=i%7;
+    const cls=col===0?'sun':col===6?'sat':'';
+    const dnH=isT?`<div class="dn tnow">${d}</div>`:`<div class="dn ${cls}">${d}</div>`;
+    const evH=evs.filter(e=>e.date===ds).map(e=>`<button class="mev ${PM[e.plat]?.mc||''}" onclick="openM(${e.id})">${e.title}</button>`).join('');
+    html+=`<div class="mcell${isT?' tc':''}">${dnH}${evH}</div>`;cnt++;
+  }
+  document.getElementById('mgrid').innerHTML=html;
+}
+
+function rWeek(){
+  const a=new Date(2026,3,1);const ad=a.getDay();const ws=new Date(a);ws.setDate(a.getDate()-ad+calO*7);
+  const we=new Date(ws.getTime()+6*86400000);
+  document.getElementById('period').textContent=`${ws.getMonth()+1}/${ws.getDate()} — ${we.getMonth()+1}/${we.getDate()}`;
+  const today=new Date();const evs=calItems();const DAYS=['일','월','화','수','목','금','토'];let html='';
+  for(let i=0;i<7;i++){
+    const d=new Date(ws.getTime()+i*86400000);const yr=d.getFullYear(),mo=d.getMonth(),dt=d.getDate();
+    const ds=`${yr}-${String(mo+1).padStart(2,'0')}-${String(dt).padStart(2,'0')}`;
+    const isT=today.getFullYear()===yr&&today.getMonth()===mo&&today.getDate()===dt;
+    const devs=evs.filter(e=>e.date===ds);
+    html+=`<div class="wcol${isT?' twc':''}"><div class="wcol-hd"><div class="wcol-dow">${DAYS[i]}</div><div class="wcol-d${isT?' td':''}">${dt}</div></div><div class="wcol-body">${devs.map(e=>`<button class="wev ${PM[e.plat]?.wc||''}" onclick="openM(${e.id})">${PM[e.plat]?.n||e.plat}<br>${e.title}</button>`).join('')}</div></div>`;
+  }
+  document.getElementById('wgrid').innerHTML=html;
+}
+
+function openM(id){
+  const it=DB.find(r=>r.id===id);if(!it)return;const pm=PM[it.plat]||{};const{c1,c2}=gc(it);
+  const mbg=document.getElementById('mbg');
+  if(it.poster){mbg.style.cssText=`background-image:url(${it.poster});background-size:cover;background-position:center`;}
+  else{mbg.style.cssText=`background:linear-gradient(145deg,${c1},${c2})`;}
+  document.getElementById('mart').innerHTML=it.poster?'':svg(it,580,230);
+  document.getElementById('mt').textContent=it.title;
+  document.getElementById('mc').innerHTML=`<span class="mchip pl" style="background:${pm.c||'#444'}">${pm.n||it.plat}</span>`+(it.genre||[]).map(g=>`<span class="mchip">${g}</span>`).join('')+`<span class="mchip">${it.type||'드라마'}</span>`;
+  document.getElementById('md').textContent=fd(it.date);
+  document.getElementById('mca').textContent=it.cast||'정보 없음';
+  document.getElementById('msy').textContent=it.synopsis||'';
+  document.getElementById('ov').classList.add('open');document.body.style.overflow='hidden';
+}
+function closeM(){document.getElementById('ov').classList.remove('open');document.body.style.overflow='';}
+function ovc(e){if(e.target===document.getElementById('ov'))closeM();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM();});
+
+let tTm;
+function showT(msg,{spin=true,ico=''}={}){clearTimeout(tTm);document.getElementById('tmsg').textContent=msg;document.getElementById('tspin').style.display=spin?'inline-block':'none';document.getElementById('tico').textContent=ico;document.getElementById('toast').classList.add('show');}
+function hideT(d=0){tTm=setTimeout(()=>document.getElementById('toast').classList.remove('show'),d);}
+
+async function runAI(){
+  const btn=document.getElementById('aibtn');btn.disabled=true;showT('AI가 최신 신작을 검색하는 중...');
+  document.getElementById('grid').innerHTML=Array(6).fill(skelH()).join('');
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2000,tools:[{type:'web_search_20250305',name:'web_search'}],messages:[{role:'user',content:`오늘(2026년 4월) 기준 한국 OTT 신작 드라마·영화 8~10편을 검색하고 JSON만 반환(마크다운 없이):{"items":[{"title":"제목","plat":"nf|di|tv|wc","type":"드라마|영화|시리즈|예능","genre":["장르"],"date":"YYYY-MM-DD","cast":"배우","synopsis":"2-3문장","tmq":"영어 TMDB 검색어","featured":false}]}`}]})});
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    const raw=await res.json();const txt=(raw.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n');
+    const m=txt.match(/\{[\s\S]*\}/);if(!m)throw new Error('no json');
+    const parsed=JSON.parse(m[0]);const items=(parsed.items||[]).map((it,i)=>({...it,id:Date.now()+i,poster:null}));
+    if(!items.length)throw new Error('empty');items[0].featured=true;DB=items;
+    document.getElementById('ts').textContent='AI 업데이트 '+new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
+    showT(`${items.length}편 업데이트 완료`,{spin:false,ico:'✓'});hideT(3000);setTimeout(loadP,400);
+  }catch(e){console.error(e);showT('업데이트 실패 — 기존 데이터 유지',{spin:false,ico:'!'});hideT(3500);}
+  finally{btn.disabled=false;rCards();rCal();}
+}
+
+rCards();rCal();loadP();
+</script>
+</body>
+</html>
