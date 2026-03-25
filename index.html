@@ -61,6 +61,14 @@ nav{position:sticky;top:0;z-index:200;height:58px;display:flex;align-items:cente
 .nav-search input:focus{border-color:var(--b3);background:var(--s3)}
 
 .nav-r{margin-left:auto;display:flex;align-items:center;gap:10px}
+
+/* 방문자 통계 스타일 */
+.visitor-stats{display:flex;align-items:center;gap:12px;padding:5px 14px;border-radius:10px;background:var(--s2);border:1px solid var(--b2)}
+.stat-item{display:flex;flex-direction:column;align-items:center;gap:2px}
+.stat-label{font-size:9px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--t3)}
+.stat-value{font-size:15px;font-weight:800;color:var(--cream);font-variant-numeric:tabular-nums;min-width:40px;text-align:center}
+.stat-sep{width:1px;height:24px;background:var(--b2)}
+
 .ai-pill{display:flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;letter-spacing:0.07em;padding:4px 11px;border-radius:20px;background:var(--cream4);color:var(--cream2);border:1px solid var(--b2)}
 .ai-dot{width:5px;height:5px;border-radius:50%;background:var(--cream);animation:gdot 2s ease-in-out infinite}
 @keyframes gdot{0%,100%{opacity:1}50%{opacity:0.25}}
@@ -214,11 +222,14 @@ nav{position:sticky;top:0;z-index:200;height:58px;display:flex;align-items:cente
 .toast-msg{font-size:13px;font-weight:600;color:var(--t1);white-space:nowrap}
 
 @media(max-width:900px){
-  nav{padding:0 20px;height:54px}
+  nav{padding:0 20px;height:54px;gap:10px}
   .logo-ot{font-size:20px}
   .logo-name{font-size:10px}
-  .nav-search{max-width:180px}
-  .ai-pill{font-size:9.5px;padding:3px 9px}
+  .nav-search{max-width:150px}
+  .visitor-stats{padding:4px 10px;gap:8px}
+  .stat-label{font-size:8px}
+  .stat-value{font-size:13px;min-width:32px}
+  .ai-pill{display:none}
   .btn-update{padding:7px 14px;font-size:11.5px}
   .btn-update svg{width:12px;height:12px}
   .hero{height:380px}
@@ -248,13 +259,25 @@ nav{position:sticky;top:0;z-index:200;height:58px;display:flex;align-items:cente
 <nav>
   <div class="logo">
     <div class="logo-ot">OT</div>
-    <div class="logo-name">ottfamily</div>
+    <div class="logo-name"></div> ```
   </div>
   <div class="nav-search">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
     <input type="text" placeholder="작품·배우·장르 검색" oninput="onSrch(this.value)">
   </div>
   <div class="nav-r">
+    <!-- 방문자 통계 -->
+    <div class="visitor-stats">
+      <div class="stat-item">
+        <div class="stat-label">Today</div>
+        <div class="stat-value" id="todayCount">-</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <div class="stat-label">Total</div>
+        <div class="stat-value" id="totalCount">-</div>
+      </div>
+    </div>
     <div class="ai-pill"><div class="ai-dot"></div>AI 큐레이션</div>
     <button class="btn-update" id="aibtn" onclick="runAI()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0118.8-4.3M22 12.5a10 10 0 01-18.8 4.2"/></svg>
@@ -362,6 +385,35 @@ let DB=[
 
 let flt='all',srch='',calV='week',calO=0,hid=1;
 const TM_KEY='a7f73e8241da9b3f2ec6bb41c0482547';
+
+// CountAPI를 사용한 방문자 통계
+async function loadVisitorStats() {
+  const NAMESPACE = 'ot-boss-2026-v1'; // 고유한 이름 설정
+  const today = new Date().toISOString().split('T')[0];
+  
+  try {
+    // 총 방문자 증가 및 가져오기
+    const totalRes = await fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/total`);
+    const totalData = await totalRes.json();
+    document.getElementById('totalCount').textContent = formatNumber(totalData.value);
+    
+    // 오늘 방문자 증가 및 가져오기
+    const todayRes = await fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${today}`);
+    const todayData = await todayRes.json();
+    document.getElementById('todayCount').textContent = formatNumber(todayData.value);
+  } catch (err) {
+    console.error('방문자 통계 로드 실패:', err);
+    document.getElementById('totalCount').textContent = '-';
+    document.getElementById('todayCount').textContent = '-';
+  }
+}
+
+// 숫자 포맷팅 (1000 → 1K)
+function formatNumber(num) {
+  if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+  if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+  return num.toString();
+}
 
 function gc(it){const h=(it.title||'').split('').reduce((a,c)=>a+c.charCodeAt(0),0);const c1=['#E52B50','#4A90E2','#9B59B6','#E67E22','#1ABC9C'][h%5];const c2=['#8E44AD','#2C3E50','#D35400','#27AE60','#2980B9'][h%5];return{c1,c2};}
 
@@ -494,6 +546,8 @@ async function runAI(){
   finally{btn.disabled=false;rCards();rCal();}
 }
 
+// 페이지 로드 시 통계 로드
+loadVisitorStats();
 rCards();rCal();loadP();
 </script>
 </body>
