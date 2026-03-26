@@ -9,13 +9,13 @@
 <meta name="description" content="OT 오티 — 이번 달 OTT 신작을 한눈에. 넷플릭스, 디즈니플러스, 티빙, 왓챠 신작을 캘린더로 확인하세요.">
 <meta name="keywords" content="OTT 신작, OTT 캘린더, 넷플릭스 신작, 디즈니플러스 신작, 티빙 신작, 왓챠 신작, 오티, ottfamily, OT">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://[깃허브사용자명].github.io/ot/">
+<link rel="canonical" href="https://boss-v.github.io/ot/">
 
 <!-- Open Graph (카카오·슬랙 등 공유 미리보기) -->
 <meta property="og:title" content="OT 오티 — OTT 신작 캘린더">
 <meta property="og:description" content="넷플릭스·디즈니+·티빙·왓챠 신작을 캘린더로 한눈에. 매달 AI가 자동 업데이트.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://[깃허브사용자명].github.io/ot/">
+<meta property="og:url" content="https://boss-v.github.io/ot/">
 <meta property="og:locale" content="ko_KR">
 
 <!-- 구조화 데이터 (구글 리치 결과용) -->
@@ -25,7 +25,7 @@
   "@type": "WebSite",
   "name": "OT 오티",
   "alternateName": "ottfamily",
-  "url": "https://[깃허브사용자명].github.io/ot/",
+  "url": "https://boss-v.github.io/ot/",
   "description": "OTT 신작 캘린더 서비스",
   "inLanguage": "ko"
 }
@@ -259,7 +259,7 @@ nav{position:sticky;top:0;z-index:200;height:58px;display:flex;align-items:cente
 <nav>
   <div class="logo">
     <div class="logo-ot">OT</div>
-    <div class="logo-name"></div> ```
+    <div class="logo-name">ottfamily</div>
   </div>
   <div class="nav-search">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
@@ -267,9 +267,17 @@ nav{position:sticky;top:0;z-index:200;height:58px;display:flex;align-items:cente
   </div>
   <div class="nav-r">
     <!-- 방문자 통계 -->
-<div class="visitor-stats" style="display: flex; gap: 10px; align-items: center;">
-  <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fboss-v.github.io%2Fot&count_bg=%23333333&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=VISITS&edge_flat=false" alt="Hits">
-</div>
+    <div class="visitor-stats">
+      <div class="stat-item">
+        <div class="stat-label">Today</div>
+        <div class="stat-value" id="todayCount">-</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <div class="stat-label">Total</div>
+        <div class="stat-value" id="totalCount">-</div>
+      </div>
+    </div>
     <div class="ai-pill"><div class="ai-dot"></div>AI 큐레이션</div>
     <button class="btn-update" id="aibtn" onclick="runAI()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0118.8-4.3M22 12.5a10 10 0 01-18.8 4.2"/></svg>
@@ -361,6 +369,10 @@ nav{position:sticky;top:0;z-index:200;height:58px;display:flex;align-items:cente
   <div class="toast-msg" id="tmsg"></div>
 </div>
 
+<!-- GoatCounter 트래킹 (상세 분석용) -->
+<script data-goatcounter="https://ot-vv.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
 <script>
 const PM={nf:{n:'넷플릭스',c:'#E5182A',pb:'pb-nf',mc:'mc-nf',wc:'wc-nf'},di:{n:'디즈니+',c:'#1A8FDE',pb:'pb-di',mc:'mc-di',wc:'wc-di'},tv:{n:'티빙',c:'#FF2550',pb:'pb-tv',mc:'mc-tv',wc:'wc-tv'},wc:{n:'왓챠',c:'#FF5F8A',pb:'pb-wc',mc:'mc-wc',wc:'wc-wc'}};
 
@@ -378,9 +390,9 @@ let DB=[
 let flt='all',srch='',calV='week',calO=0,hid=1;
 const TM_KEY='a7f73e8241da9b3f2ec6bb41c0482547';
 
-// CountAPI를 사용한 방문자 통계
+// CountAPI를 사용한 방문자 통계 (사이트 표시용)
 async function loadVisitorStats() {
-  const NAMESPACE = 'ot-boss-2026-v1'; // 고유한 이름 설정
+  const NAMESPACE = 'ot-vv-boss'; // 고유한 네임스페이스
   const today = new Date().toISOString().split('T')[0];
   
   try {
