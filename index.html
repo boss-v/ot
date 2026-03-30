@@ -371,37 +371,27 @@ nav{position:sticky;top:0;z-index:200;height:58px;display:flex;align-items:cente
         async src="//gc.zgo.at/count.js"></script>
 
 <script>
-// localStorage 기반 방문자 카운터 (CORS 없음, 즉시 작동)
-// TODAY: 오늘 날짜 기준 이 브라우저의 방문 횟수
-// TOTAL: 이 브라우저의 누적 방문 횟수 (근사치)
-function loadVisitorStats() {
+// counterapi.dev V1 — 가입/인증 없이 CORS 지원, 진짜 방문자 집계
+async function loadVisitorStats() {
+  const NS = 'ot-boss-v';           // 고유 네임스페이스 (바꾸지 마세요)
+  const todayKey = 'visit-' + new Date().toISOString().split('T')[0]; // 예: visit-2026-04-01
+
   try {
-    const todayKey = 'ot_today_' + new Date().toISOString().split('T')[0];
-    const totalKey = 'ot_total';
+    // TOTAL: 방문 시 +1 하고 현재 값 받기
+    const totalRes = await fetch(`https://api.counterapi.dev/v1/${NS}/total/up`);
+    const totalData = await totalRes.json();
+    document.getElementById('totalCount').textContent = formatNumber(totalData.count ?? totalData.value ?? 0);
+  } catch(e) {
+    document.getElementById('totalCount').textContent = '-';
+  }
 
-    // 오늘 카운트
-    const todayVal = parseInt(localStorage.getItem(todayKey) || '0') + 1;
-    localStorage.setItem(todayKey, todayVal);
-
-    // 총 카운트
-    const totalVal = parseInt(localStorage.getItem(totalKey) || '0') + 1;
-    localStorage.setItem(totalKey, totalVal);
-
-    document.getElementById('todayCount').textContent = formatNumber(todayVal);
-    document.getElementById('totalCount').textContent = formatNumber(totalVal);
-
-    // 오래된 today 키 정리 (7일 이상된 것 삭제)
-    const cutoff = new Date();
-    cutoff.setDate(cutoff.getDate() - 7);
-    Object.keys(localStorage).forEach(k => {
-      if (k.startsWith('ot_today_')) {
-        const d = k.replace('ot_today_', '');
-        if (d < cutoff.toISOString().split('T')[0]) localStorage.removeItem(k);
-      }
-    });
+  try {
+    // TODAY: 오늘 날짜 키로 +1 하고 현재 값 받기
+    const todayRes = await fetch(`https://api.counterapi.dev/v1/${NS}/${todayKey}/up`);
+    const todayData = await todayRes.json();
+    document.getElementById('todayCount').textContent = formatNumber(todayData.count ?? todayData.value ?? 0);
   } catch(e) {
     document.getElementById('todayCount').textContent = '-';
-    document.getElementById('totalCount').textContent = '-';
   }
 }
 
