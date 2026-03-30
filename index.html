@@ -371,30 +371,27 @@ nav{position:sticky;top:0;z-index:200;height:58px;display:flex;align-items:cente
         async src="//gc.zgo.at/count.js"></script>
 
 <script>
-// GoatCounter 방문자 통계
+// hitscounter.dev SVG 파싱으로 TODAY/TOTAL 표시 (CORS 없음)
 async function loadVisitorStats() {
+  const url = encodeURIComponent('https://boss-v.github.io/ot/');
+  const badgeUrl = `https://hitscounter.dev/api/hit?url=${url}&label=hits&color=%23ffffff&style=flat`;
   try {
-    const todayStr = new Date().toISOString().split('T')[0];
-
-    // 전체 누적 방문수
-    const totalRes = await fetch('https://ot-vv.goatcounter.com/counter//.json');
-    if (totalRes.ok) {
-      const d = await totalRes.json();
-      document.getElementById('totalCount').textContent = formatNumber(d.count || 0);
-    } else {
-      document.getElementById('totalCount').textContent = '-';
-    }
-
-    // 오늘 방문수
-    const todayRes = await fetch(`https://ot-vv.goatcounter.com/counter//.json?start=${todayStr}&end=${todayStr}`);
-    if (todayRes.ok) {
-      const d = await todayRes.json();
-      document.getElementById('todayCount').textContent = formatNumber(d.count || 0);
-    } else {
+    const res = await fetch(badgeUrl);
+    if (!res.ok) throw new Error('fetch fail');
+    const svg = await res.text();
+    // SVG 안의 숫자 두 개 추출 (today / total 형식)
+    const matches = [...svg.matchAll(/>\s*(\d[\d,]*)\s*</g)].map(m => m[1].replace(/,/g,''));
+    if (matches.length >= 2) {
+      document.getElementById('todayCount').textContent = formatNumber(parseInt(matches[0]));
+      document.getElementById('totalCount').textContent = formatNumber(parseInt(matches[1]));
+    } else if (matches.length === 1) {
+      document.getElementById('totalCount').textContent = formatNumber(parseInt(matches[0]));
       document.getElementById('todayCount').textContent = '-';
+    } else {
+      throw new Error('no numbers');
     }
   } catch (err) {
-    console.error('방문자 통계 로드 실패:', err);
+    console.error('통계 로드 실패:', err);
     document.getElementById('totalCount').textContent = '-';
     document.getElementById('todayCount').textContent = '-';
   }
@@ -409,6 +406,7 @@ function formatNumber(num) {
 const PM={nf:{n:'넷플릭스',c:'#E5182A',pb:'pb-nf',mc:'mc-nf',wc:'wc-nf'},di:{n:'디즈니+',c:'#1A8FDE',pb:'pb-di',mc:'mc-di',wc:'wc-di'},tv:{n:'티빙',c:'#FF2550',pb:'pb-tv',mc:'mc-tv',wc:'wc-tv'},wc:{n:'왓챠',c:'#FF5F8A',pb:'pb-wc',mc:'mc-wc',wc:'wc-wc'}};
 
 let DB=[
+  {id:1,title:'사일로 시즌2',plat:'di',type:'시리즈',genre:['SF','스릴러'],date:'2026-04-01',cast:'레베카 퍼거슨, 팀 로빈스',synopsis:'인류의 마지막 피난처, 지하 144층 사일로. 외부세계의 진실을 알게 된 줄리엣은 또 다른 사일로를 발견하고 충격적인 비밀과 마주한다.',tmq:'Silo Season 2',featured:true},
   {id:2,title:'나쁜 기억 지우개',plat:'nf',type:'드라마',genre:['로맨스','멜로'],date:'2026-04-03',cast:'김재영, 진기주',synopsis:'기억을 잃어가는 한 남자와 그를 지키려는 여자의 애틋한 사랑 이야기. 시간이 흐를수록 더욱 간절해지는 감정이 가슴을 울린다.',tmq:'Bad Memory Eraser',featured:false},
   {id:3,title:'블랙아웃',plat:'tv',type:'드라마',genre:['범죄','스릴러'],date:'2026-04-05',cast:'변요한, 김보라',synopsis:'정전이 일어난 도시에서 벌어진 연쇄살인사건. 기억을 잃은 남자가 자신이 범인일지도 모른다는 공포 속에서 진실을 추적한다.',tmq:'Blackout Korea',featured:false},
   {id:4,title:'더 라스트 오브 어스 시즌2',plat:'wc',type:'시리즈',genre:['드라마','SF'],date:'2026-04-08',cast:'페드로 파스칼, 벨라 램지',synopsis:'엘리와 조엘의 여정이 계속된다. 복수와 용서, 그리고 살아남기 위한 선택 앞에서 두 사람은 또 다른 시련을 마주한다.',tmq:'The Last of Us Season 2',featured:false},
